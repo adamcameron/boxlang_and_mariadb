@@ -12,6 +12,21 @@ Installation:
 git clone git@github.com:adamcameron/boxlang_and_mariadb.git
 ```
 
+- Set some passwords
+
+MariaDB expects a root and a user pwd.
+I set these in `docker/env/envVars.private` (which is `.gitignore`-ed),
+as indicated by the env vars in `docker/env/envVars.private.template`:
+
+```
+MARIADB_ROOT_PASSWORD=
+MARIADB_PASSWORD=
+```
+
+They can be set to any values you like, as the MariaDB install will create the
+accounts with these values.
+
+
 - Change into the `boxlang_and_mariadb/docker` directory:
 
 ```
