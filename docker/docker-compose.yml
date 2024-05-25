@@ -1,0 +1,41 @@
+services:
+    boxlang:
+        build:
+            context: ./boxlang
+        env_file:
+            - env/envVars.public
+            - env/envVars.private
+        volumes:
+            - ../:/app
+        ports:
+            - "8080:8080"
+        stdin_open: true
+        tty: true
+        networks:
+            - backend
+
+    mariadb:
+        build:
+            context: ./mariadb
+        env_file:
+            - env/envVars.public
+            - env/envVars.private
+        ports:
+            - "3306:3306"
+        volumes:
+            - mariaDbData:/var/lib/mariadb
+            - ./mariadb/root_home:/root
+            - ../var/log:/var/log
+        stdin_open: true
+        tty: true
+        networks:
+            backend:
+                aliases:
+                    - database.backend
+
+volumes:
+    mariaDbData:
+
+networks:
+    backend:
+        driver: "bridge"

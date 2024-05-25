@@ -1,0 +1,11 @@
+{
+    "modules" : {
+        "compat" : {
+            "disabled" : false,
+            "settings" : {
+                "isAdobe" : false,
+                "isLucee" : true
+            }
+        }
+    }
+}

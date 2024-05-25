@@ -1,0 +1,12 @@
+{
+    "dependencies":{
+        "bx-compat":"^1.0.0-SNAPSHOT",
+        "bx-mysql":"^1.0.0-SNAPSHOT",
+        "testbox":"^5.4.0+7"
+    },
+    "installPaths":{
+        "bx-compat":"~/.boxlang/modules/bx-compat/",
+        "bx-mysql":"~/.boxlang/modules/bx-mysql/",
+        "testbox":"testbox/"
+    }
+}
