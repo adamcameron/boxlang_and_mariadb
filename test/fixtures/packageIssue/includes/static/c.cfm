@@ -1,2 +1,2 @@
-<cffunction name="c" access="package">
+<cffunction name="c">
 </cffunction>
