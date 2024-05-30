@@ -1,4 +1,4 @@
-FROM ortussolutions/boxlang:miniserver-snapshot
+FROM ortussolutions/boxlang:miniserver
 
 COPY root_home/.bashrc /root/.bashrc
 COPY root_home/.vimrc /root/.vimrc

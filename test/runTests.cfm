@@ -3,7 +3,7 @@
 	if (URL.testBundles.len()) {
 		param URL.directories = ""
 	}else{
-		param URL.directories="test.integration"
+		param URL.directories="test.integration,test.unit"
 	}
 
 	testBox = new testbox.system.TestBox(
