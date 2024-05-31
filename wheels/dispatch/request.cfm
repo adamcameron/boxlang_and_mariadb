@@ -405,11 +405,24 @@
 		loc.rv.action = ReReplace(loc.rv.action, "[^0-9A-Za-z-_\.]", "", "all");
 
 		// convert controller to upperCamelCase and action to normal camelCase
-		loc.rv.controller = REReplace(loc.rv.controller, "(^|-)([a-z])", "\u\2", "all");
-		loc.rv.action = REReplace(loc.rv.action, "-([a-z])", "\u\1", "all");
+		loc.rv.controller = dashToUpperCamel(loc.rv.controller);
+		loc.rv.action = dashToLowerCamel(loc.rv.action);
 	</cfscript>
 	<cfreturn loc.rv>
 </cffunction>
+
+<cfscript>
+    function dashToUpperCamel(s){
+        return s
+            .listToArray("-")
+            .map((v) => v.left(1).uCase() & v.substring(1))
+            .toList("")
+    }
+
+    function dashToLowerCamel(s){
+        return s.listFirst("-") & dashToUpperCamel(s.listRest("-"))
+    }
+</cfscript>
 
 <cffunction name="$addRouteFormat" returntype="struct" access="public" output="false" hint="Adds in the format variable from the route if it exists.">
 	<cfargument name="params" type="struct" required="true">

@@ -21,7 +21,7 @@
 	<cfset loc.baseReloadURL = loc.baseReloadURL & "?">
 </cfif>
 <cfset loc.baseReloadURL = loc.baseReloadURL & "reload=">
-<cfset loc.frameworkTestDir = GetDirectoryFromPath$GetBaseTemplatePath()) & "wheels/tests">
+<cfset loc.frameworkTestDir = GetDirectoryFromPath(GetBaseTemplatePath()) & "wheels/tests">
 <cfset loc.hasFrameworkTests = DirectoryExists(loc.frameworkTestDir)>
 <cfset loc.appTestDir = GetDirectoryFromPath($GetBaseTemplatePath()) & "tests">
 <cfset loc.hasAppTests = DirectoryExists(loc.appTestDir)>

@@ -458,15 +458,7 @@
 
 <cffunction name="capitalize" returntype="string" access="public" output="false">
 	<cfargument name="text" type="string" required="true">
-	<cfscript>
-		var loc = {};
-		loc.rv = arguments.text;
-		if (Len(loc.rv))
-		{
-			loc.rv = UCase(Left(loc.rv, 1)) & Mid(loc.rv, 2, Len(loc.rv)-1);
-		}
-	</cfscript>
-	<cfreturn loc.rv>
+	<cfreturn text.left(1).ucase() & text.substring(1)>
 </cffunction>
 
 <cffunction name="humanize" returntype="string" access="public" output="false">
