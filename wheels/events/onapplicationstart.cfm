@@ -1,8 +1,9 @@
 <cffunction name="onApplicationStart" returntype="void" access="public" output="false">
+
 	<cfscript>
 		var loc = {};
 
-		// abort if called from incorrect file
+        // abort if called from incorrect file
 		$abortInvalidRequest();
 
 		// setup the wheels storage struct for the current request
@@ -18,7 +19,6 @@
 		{
 			application.$wheels.reloadPassword = loc.oldReloadPassword;
 		}
-
 		// check and store server engine name, throw error if using a version that we don't support
 		// NB Lucee first as there seems to be some sort of alias in Lucee -> Railo which means server.railo exists
 		if (StructKeyExists(server, "lucee"))

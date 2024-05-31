@@ -358,14 +358,30 @@
 
 <cffunction name="$abortInvalidRequest" returntype="void" access="public" output="false">
 	<cfscript>
+
 		var loc = {};
 		loc.applicationPath = Replace(GetCurrentTemplatePath(), "\", "/", "all");
 		loc.callingPath = Replace(GetBaseTemplatePath(), "\", "/", "all");
+
+
+writeDUmp([
+    GetBaseTemplatePath(),
+    loc.callingPath,
+    loc.applicationPath,
+    ListLen(loc.callingPath, "/"),
+    ListLen(loc.applicationPath, "/"),
+    ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/"),
+    GetFileFromPath(loc.callingPath) == "root.cfm",
+    ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/") || GetFileFromPath(loc.callingPath) == "root.cfm"
+]);abort;
+
+        throw message="#getCurrentTemplatePath()#";
 		if (ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/") || GetFileFromPath(loc.callingPath) == "root.cfm")
 		{
 			if (StructKeyExists(application, "wheels"))
 			{
-				if (StructKeyExists(application.wheels, "showErrorInformation") && !application.wheels.showErrorInformation)
+
+                if (StructKeyExists(application.wheels, "showErrorInformation") && !application.wheels.showErrorInformation)
 				{
 					$header(statusCode=404, statustext="Not Found");
 				}
@@ -573,7 +589,7 @@
 		loc.component = ListChangeDelims(arguments.path, ".", "/") & "." & ListChangeDelims(arguments.fileName, ".", "/");
 		loc.argumentCollection = arguments;
 	</cfscript>
-	<cfinclude template="../../root.cfm">
+	<cfinclude template="/root.cfm">
 	<cfreturn rv>
 </cffunction>
 

@@ -114,16 +114,16 @@
 	<cffunction name="$getColumns" returntype="query" access="public" output="false">
 		<cfscript>
 			var loc = {};
-			
+
 			// get column details using cfdbinfo in the base adapter
 			loc.columns = super.$getColumns(argumentCollection=arguments);
-			
+
 			// since cfdbinfo incorrectly returns information_schema tables we need to create a new query result that excludes these tables
 			loc.rv = QueryNew(loc.columns.columnList);
 			loc.iEnd = loc.columns.recordCount;
 			for (loc.i=1; loc.i <= loc.iEnd; loc.i++)
 			{
-				// yes, it should actually be "table_schem" below, not a typo 
+				// yes, it should actually be "table_schem" below, not a typo
 				if (loc.columns["table_schem"][loc.i] != "information_schema")
 				{
 					QueryAddRow(loc.rv);
@@ -134,10 +134,10 @@
 						QuerySetCell(loc.rv, loc.item, loc.columns[loc.item][loc.i]);
 					}
 				}
-			} 
+			}
 		</cfscript>
 		<cfreturn loc.rv>
 	</cffunction>
 
-	<cfinclude template="../../plugins/injection.cfm">
+	<cfinclude template="/plugins/injection.cfm">
 </cfcomponent>

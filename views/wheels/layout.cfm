@@ -3,4 +3,4 @@
 	Do not delete this file or its containing folder.
 --->
 
-<cfinclude template="../../wheels/public/layout.cfm">
+<cfinclude template="/wheels/public/layout.cfm">

@@ -6,4 +6,5 @@
 		this.name = "MyAppName";
 		this.sessionTimeout = CreateTimeSpan(0,0,5,0);
 	*/
+    this.name = "MyAppName_#createUuid()#";
 </cfscript>

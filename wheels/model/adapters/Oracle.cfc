@@ -275,5 +275,5 @@
 		<cfreturn loc.rv>
 	</cffunction>
 
-	<cfinclude template="../../plugins/injection.cfm">
+	<cfinclude template="/plugins/injection.cfm">
 </cfcomponent>

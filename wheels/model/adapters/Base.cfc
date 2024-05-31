@@ -1,5 +1,5 @@
 <cfcomponent output="false">
-	<cfinclude template="../../global/cfml.cfm">
+	<cfinclude template="/wheels/global/cfml.cfm">
 
 	<cffunction name="init" access="public" returntype="any" output="false">
 		<cfargument name="datasource" type="string" required="true">
@@ -377,5 +377,5 @@
 		<cfreturn "/* " & arguments.text & " */">
 	</cffunction>
 
-	<cfinclude template="../../plugins/injection.cfm">
+	<cfinclude template="/plugins/injection.cfm">
 </cfcomponent>

@@ -82,7 +82,7 @@
 		</cfscript>
 		<cfreturn loc.rv>
 	</cffunction>
-	
+
 	<cffunction name="$query" returntype="struct" access="public" output="false">
 		<cfargument name="sql" type="array" required="true">
 		<cfargument name="limit" type="numeric" required="false" default=0>
@@ -97,7 +97,7 @@
 		</cfscript>
 		<cfreturn loc.rv>
 	</cffunction>
-	
+
 	<cffunction name="$identitySelect" returntype="any" access="public" output="false">
 		<cfargument name="queryAttributes" type="struct" required="true">
 		<cfargument name="result" type="struct" required="true">
@@ -118,5 +118,5 @@
 		</cfif>
 	</cffunction>
 
-	<cfinclude template="../../plugins/injection.cfm">
+	<cfinclude template="/plugins/injection.cfm">
 </cfcomponent>
