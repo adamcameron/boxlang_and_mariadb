@@ -34,6 +34,18 @@ component extends=BaseSpec {
                 }
             })
 
+            it("wri", () => {
+                try {
+                    throw(type="MyException", message="my message", detail="my detail", extendedInfo="my extended info");
+                } catch (any e) {
+                    writeDump([
+                        type = e.type,
+                        message = e.message,
+                        detail = e.detail,
+                        extendedInfo = e.extendedInfo
+                    ])
+                }
+            })
         })
     }
 }
