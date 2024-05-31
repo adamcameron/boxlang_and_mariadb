@@ -292,6 +292,10 @@
 		<!--- <cfquery name="q" dbtype="query">
 		select * from q where name not like '.%' order by name
 		</cfquery> --->
+        <cfdump var="#q#">
+        <cfset var q2 = q.filter((row) => true)>
+        <cfdump var="#q2#">
+        <cfabort>
         <cfset q = q
             .filter((row)=> row.name.replace(".", "", "all") != "")
             .sort((e1, e2) => e1.name.compare(e2.name))
