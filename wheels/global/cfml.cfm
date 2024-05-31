@@ -137,6 +137,7 @@
 </cffunction>
 
 <cffunction name="$throw" returntype="void" access="public" output="false">
+    <cfdump var="#arguments#"><cfabort>
 	<cfthrow attributeCollection="#arguments#">
 </cffunction>
 

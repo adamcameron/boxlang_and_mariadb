@@ -52,16 +52,18 @@
 			FROM loc.subfolder
 			WHERE LOWER(name) = '#LCase(loc.folders.name)#.cfc'
 			</cfquery> --->
-            <cfset loc.pluginCfc = loc.subfolder
+            <cfscript>
+            loc.pluginCfc = loc.subfolder
                 .filter((row)=> row.name = '#LCase(loc.folders.name)#.cfc')
-                .map((row) => row.name)>
+                .map((row) => row.name)
+            </cfscript>
+            <cfdump var="#[loc.subfolder,loc.pluginCfc]#">
 			<cfset loc.temp = {}>
 			<cfset loc.temp.name = Replace(loc.pluginCfc.name, ".cfc", "")>
 			<cfset loc.temp.folderPath = $fullPathToPlugin(loc.folders.name)>
 			<cfset loc.temp.componentName = loc.folders.name & "." & Replace(loc.pluginCfc.name, ".cfc", "")>
 			<cfset loc.plugins[loc.folders.name] = loc.temp>
 		</cfloop>
-
 		<cfreturn loc.plugins>
 	</cffunction>
 
@@ -278,10 +280,9 @@
 		<cfset var q = "">
 
 		<cfdirectory action="list" directory="#variables.$class.pluginPathFull#" type="dir" name="q">
-		<!--- <cfquery name="q" dbtype="query">
-		select * from q where name not like '.%'
-		</cfquery> --->
-        <cfset q = q.filter((row)=> row.name.replace(".", "", "all") != "")>
+        <cfscript>
+        q = q.filter((row)=> row.name.left(1) != ".")
+        </cfscript>
 		<cfreturn q>
 	</cffunction>
 
@@ -289,17 +290,11 @@
 		<cfset var q = "">
 
 		<cfdirectory directory="#variables.$class.pluginPathFull#" action="list" filter="*.zip" type="file" sort="name DESC" name="q">
-		<!--- <cfquery name="q" dbtype="query">
-		select * from q where name not like '.%' order by name
-		</cfquery> --->
-        <cfdump var="#q#">
-        <cfset var q2 = q.filter((row) => true)>
-        <cfdump var="#q2#">
-        <cfabort>
-        <cfset q = q
-            .filter((row)=> row.name.replace(".", "", "all") != "")
+        <cfscript>
+            q
+            .filter((row)=> row.name.left(1) != ".")
             .sort((e1, e2) => e1.name.compare(e2.name))
-        >
+        </cfscript>
 		<cfreturn q>
 	</cffunction>
 
