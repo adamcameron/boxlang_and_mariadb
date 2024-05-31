@@ -132,6 +132,7 @@
 <cffunction name="$directory" returntype="any" access="public" output="false">
 	<cfset var rv = "">
 	<cfset arguments.name = "rv">
+    <cfparam name="arguments.action" default="list">
 	<cfdirectory attributeCollection="#arguments#">
 	<cfreturn rv>
 </cffunction>

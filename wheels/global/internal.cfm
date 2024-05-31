@@ -658,7 +658,6 @@
 
 		// by default we return Model or Controller so that the base component gets loaded
 		loc.rv = capitalize(arguments.type);
-
 		// we are going to store the full controller / model path in the existing / non-existing lists so we can have controllers / models in multiple places
 		loc.fullObjectPath = arguments.objectPath & "/" & arguments.name;
 
@@ -705,7 +704,7 @@
 	<cfargument name="type" type="string" required="false" default="controller">
 	<cfscript>
 		var loc = {};
-
+var originals = duplicate(arguments)
 		// let's allow for multiple controller paths so that plugins can contain controllers
 		// the last path is the one we will instantiate the base controller on if the controller is not found on any of the paths
 		loc.iEnd = ListLen(arguments.controllerPaths);
@@ -715,8 +714,16 @@
 			loc.fileName = $objectFileName(name=arguments.name, objectPath=loc.controllerPath, type=arguments.type);
 			if (loc.fileName != "Controller" || loc.i == ListLen(arguments.controllerPaths))
 			{
-				application.wheels.controllers[arguments.name] = $createObjectFromRoot(path=loc.controllerPath, fileName=loc.fileName, method="$initControllerClass", name=arguments.name);
-				loc.rv = application.wheels.controllers[arguments.name];
+try {
+                application.wheels.controllers[arguments.name] = $createObjectFromRoot(path=loc.controllerPath, fileName=loc.fileName, method="$initControllerClass", name=arguments.name);
+} catch (any e) {
+    writeDump(originals)
+    writeDump(arguments)
+    writeDump(loc)
+    writeDump(e)
+    abort;
+}
+                loc.rv = application.wheels.controllers[arguments.name];
 				break;
 			}
 		}

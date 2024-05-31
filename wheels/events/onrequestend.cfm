@@ -1,4 +1,4 @@
-<cffunction name="onRequestEnd" returntype="void" access="public" output="true"><cfargument name="targetpage" type="any" required="true"><cfscript>
+<cffunction name="onRequestEnd" returntype="void" access="public" output="true"><cfargument name="targetpage" type="any" required="false"><cfscript>
 	var loc = {};
 	loc.lockName = "reloadLock" & application.applicationName;
 	$simpleLock(name=loc.lockName, execute="$runOnRequestEnd", executeArgs=arguments, type="readOnly", timeout=180);
@@ -9,7 +9,7 @@
 </cfscript></cffunction>
 
 <cffunction name="$runOnRequestEnd" returntype="void" access="public" output="false">
-	<cfargument name="targetpage" type="any" required="true">
+	<cfargument name="targetpage" type="any" required="false">
 	<cfscript>
 		if (application.wheels.showDebugInformation)
 		{
