@@ -111,7 +111,7 @@
 		}
 		else
 		{
-			application.$wheels.dataSourceName = LCase(ListLast(GetDirectoryFromPath(GetBaseTemplatePath()), Right(GetDirectoryFromPath(GetBaseTemplatePath()), 1)));
+			application.$wheels.dataSourceName = LCase(ListLast(GetDirectoryFromPath($GetBaseTemplatePath()), Right(GetDirectoryFromPath($GetBaseTemplatePath()), 1)));
 		}
 		application.$wheels.dataSourceUserName = "";
 		application.$wheels.dataSourcePassword = "";

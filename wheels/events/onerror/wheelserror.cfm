@@ -5,7 +5,7 @@
 	<h2>Suggested action</h2>
 	<p>#REReplace(arguments.wheelsError.extendedInfo, "`([^`]*)`", "<tt>\1</tt>", "all")#</p>
 </cfif>
-<cfset loc.path = GetDirectoryFromPath(GetBaseTemplatePath())>
+<cfset loc.path = GetDirectoryFromPath($GetBaseTemplatePath())>
 <cfset loc.errorPos = 0>
 <cfloop array="#arguments.wheelsError.tagContext#" index="loc.i">
 	<cfset loc.errorPos = loc.errorPos + 1>

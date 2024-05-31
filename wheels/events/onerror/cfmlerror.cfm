@@ -16,7 +16,7 @@
 	</cfif>
 	<cfif StructKeyExists(loc, "tagContext")>
 		<p><strong>Location:</strong><br>
-		<cfset loc.path = GetDirectoryFromPath(GetBaseTemplatePath())>
+		<cfset loc.path = GetDirectoryFromPath($GetBaseTemplatePath())>
 		<cfset loc.pos = 0>
 		<cfloop array="#arguments.exception.cause.tagContext#" index="loc.i">
 			<cfset loc.pos = loc.pos + 1>

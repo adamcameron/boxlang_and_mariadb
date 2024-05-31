@@ -1,7 +1,13 @@
 
+<cfscript>
+    string function $getBaseTemplatePath() {
+        return getBaseTemplatePath().reReplace("^.*?absolutePath=([^]]+).*$", "\1", "ONE")
+    }
+</cfscript>
 
-<cfset this.name = Hash(GetDirectoryFromPath(GetBaseTemplatePath()))>
-<cfset this.mappings["/wheelsMapping"] = GetDirectoryFromPath(GetBaseTemplatePath()) & "wheels">
+
+<cfset this.name = Hash(GetDirectoryFromPath($GetBaseTemplatePath()))>
+<cfset this.mappings["/wheelsMapping"] = GetDirectoryFromPath($GetBaseTemplatePath()) & "wheels">
 <cfset this.sessionManagement = true>
 <cfif StructKeyExists(server, "railo") OR StructKeyExists(server, "lucee")>
     <cfinclude template="../config/app.cfm">

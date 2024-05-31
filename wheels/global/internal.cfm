@@ -361,21 +361,9 @@
 
 		var loc = {};
 		loc.applicationPath = Replace(GetCurrentTemplatePath(), "\", "/", "all");
-		loc.callingPath = Replace(GetBaseTemplatePath(), "\", "/", "all");
+		loc.callingPath = Replace($GetBaseTemplatePath(), "\", "/", "all");
 
 
-writeDUmp([
-    GetBaseTemplatePath(),
-    loc.callingPath,
-    loc.applicationPath,
-    ListLen(loc.callingPath, "/"),
-    ListLen(loc.applicationPath, "/"),
-    ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/"),
-    GetFileFromPath(loc.callingPath) == "root.cfm",
-    ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/") || GetFileFromPath(loc.callingPath) == "root.cfm"
-]);abort;
-
-        throw message="#getCurrentTemplatePath()#";
 		if (ListLen(loc.callingPath, "/") > ListLen(loc.applicationPath, "/") || GetFileFromPath(loc.callingPath) == "root.cfm")
 		{
 			if (StructKeyExists(application, "wheels"))
