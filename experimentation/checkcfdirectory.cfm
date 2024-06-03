@@ -1,7 +1,7 @@
 <cfscript>
     cfmFiles = directoryList(
         path = "#getDirectoryFromPath(getCurrentTemplatePath())#",
-        filter = "*.cfm",
+        filter = "*.boo",
         listInfo = "query"
     )
     writeDump(cfmFiles)
@@ -12,7 +12,7 @@
 
 <cfset cfmFiles2 = directoryList(
     path = "#getDirectoryFromPath(getCurrentTemplatePath())#",
-    filter = "*.cfm",
+    filter = "*.boo",
     listInfo = "query"
 )>
 <cfdump var="#cfmFiles2#">
